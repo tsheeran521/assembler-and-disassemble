@@ -128,7 +128,7 @@ void BinaryToDec(vector<string>& bin);
 params:
 使用方法：直接调用
 */
-int disassemble();
+void disassemble();
 
 /*
 函数功能：打印函数

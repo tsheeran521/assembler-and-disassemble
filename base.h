@@ -26,6 +26,19 @@ void InitAssembleInstructions(vector<string>& assIns)
     assIns.push_back("JEQ");
     assIns.push_back("JNE");
     assIns.push_back("JMP");
+    assIns.push_back("AND");
+    assIns.push_back("OR");
+    assIns.push_back("XOR");
+    assIns.push_back("NOT");
+    assIns.push_back("SHL");
+    assIns.push_back("SAL");
+    assIns.push_back("SHR");
+    assIns.push_back("SAR");
+    assIns.push_back("ROL");
+    assIns.push_back("ROR");
+    assIns.push_back("RCL");
+    assIns.push_back("RCR");
+    assIns.push_back("LODS");
 }
 
 void InitInstrctionArgNumber(map<BinIns, int>& insArgNum)
@@ -49,7 +62,19 @@ void InitInstrctionArgNumber(map<BinIns, int>& insArgNum)
     insArgNum[binJeq]  = 1;
     insArgNum[binJne]  = 1;
     insArgNum[binJmp]  = 1;
-
+    insArgNum[binAnd]  = 1;
+    insArgNum[binOr]   = 1;
+    insArgNum[binXor]  = 1;
+    insArgNum[binNot]  = 1;
+    insArgNum[binShl]  = 1;
+    insArgNum[binSal]  = 1;
+    insArgNum[binShr]  = 1;
+    insArgNum[binSar]  = 1;
+    insArgNum[binRol]  = 1;
+    insArgNum[binRor]  = 1;
+    insArgNum[binRcl]  = 1;
+    insArgNum[binRcr]  = 1;
+    insArgNum[binLods]  = 1;
     insArgNum[binInvalid] = 1;
 }
 
@@ -115,6 +140,7 @@ void AssembleToBinary(const vector<string>& ass,
         auto cit = assToBin.find(strOp);
         if (cit == assToBin.end())
         {
+            cout<<"the order "<<strOp<<" is not in the list!"<<endl;
             // 没有找到对应的指令码
             // 忽略处理
             ;
@@ -258,6 +284,7 @@ void BinaryToAssemble(const vector<string>& bin,
         auto cit = binToIns.find(opBin);
         if (cit == binToIns.end())
         {
+            cout<<"the order: "<<strOp<<" is not in the list!"<<endl;
             // 非法二进制指令
             // 忽略处理
             ;
@@ -307,7 +334,7 @@ void BinaryToDec(vector<string>& bin)
     }
 }
 
-int disassemble()
+void disassemble()
 {
     // 汇编指令集
     vector<string> assIns;
